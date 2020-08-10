@@ -1,4 +1,5 @@
 # BioRelation_Extraction_BioBERT_SDP
+Biomedical Relation Extraction by enhancing the tranformer models reducing the noisy samples utilizing shortes dependency features (SDP).
 
 # Dependencies
 torch==1.1.0
