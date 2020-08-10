@@ -1,7 +1,8 @@
 # BioRelation_Extraction_BioBERT_SDP
 
 # Dependencies
-torch==1.1.0
+torch==1.1.0\n
+
 spacy==2.2.3
 tensorflow==1.12.0
 Keras==2.2.4
