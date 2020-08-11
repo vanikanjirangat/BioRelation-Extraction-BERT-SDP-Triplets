@@ -1,6 +1,10 @@
 # BioRelation_Extraction_BioBERT_SDP
 Biomedical Relation Extraction by enhancing the tranformer models reducing the noisy samples utilizing shortes dependency features (SDP).
 
+# STEPS
+
+CLone the directory and follow the below steps
+
 # Data Generation: Removing Nosiy Data with SDP Information
 Gen_data_CDR.py-- script to generate the train, dev and test sets for CDR dataset
 Gen_data_Chemprot.py--script to generate the train, dev and test sets for Chemprot dataset
