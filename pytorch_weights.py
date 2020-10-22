@@ -80,6 +80,6 @@ pytorch_dump_path='.\PYTORCH_biobert_tuning\'
 model=convert_tf_checkpoint_to_pytorch(tf_checkpoint_path, bert_config_file, pytorch_dump_path)
 
 # Save pytorch-model
-print("Save PyTorch model to {}".format('weights/'))
-torch.save(model.state_dict(),'weights/pytorch_model.bin')
+print("Save PyTorch model to {}".format('biobert/'))
+torch.save(model.state_dict(),'biobert/pytorch_model.bin')
 
