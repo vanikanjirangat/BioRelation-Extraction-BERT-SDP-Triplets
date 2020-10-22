@@ -73,9 +73,9 @@ def convert_tf_checkpoint_to_pytorch(tf_checkpoint_path, bert_config_file, pytor
    
     
     
-tf_checkpoint_path ='C:\\Users\\Install\\Miniconda3\\envs\\tensorflow_env\\OGER\\PYTORCH_biobert_tuning\\BioBert_w\\model.ckpt-1000000'
-bert_config_file='C:\\Users\\Install\\Miniconda3\\envs\\tensorflow_env\\OGER\\PYTORCH_biobert_tuning\\BioBert_w\\bert_config.json'
-pytorch_dump_path='C:\\Users\\Install\\Miniconda3\\envs\\tensorflow_env\\OGER\\PYTORCH_biobert_tuning\\'
+tf_checkpoint_path ='.\BioBert_w\model.ckpt-1000000'
+bert_config_file='.\BioBert_w\bert_config.json'
+pytorch_dump_path='.\PYTORCH_biobert_tuning\'
 
 model=convert_tf_checkpoint_to_pytorch(tf_checkpoint_path, bert_config_file, pytorch_dump_path)
 
