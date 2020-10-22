@@ -77,12 +77,7 @@ class preprocess_model(object):
             pmid=d[0].split('|')[0]
 #            print(pmid)
             tags=d[2]
-           
-#            if pmid=='9323412':
-                
-#                print('#####################yes')
-#                print(tags)
-                
+
             tgs=[k[3:] for k in tags]
             c1=[k for k in tgs if len(k)>=3 and k[2]!='-1' and k[1]=='Chemical']
             d1=[k for k in tgs if len(k)>=3 and k[2]!='-1' and k[1]=='Disease']
@@ -158,14 +153,7 @@ class preprocess_model(object):
                     self.p_rel+=1
             
             
-#            chemical_list=list(map(list, OrderedDict.fromkeys(map(tuple, chemical_list))))
-            
-#            disease_list=list(map(list, OrderedDict.fromkeys(map(tuple, disease_list))))
-#            print(chemical_list,disease_list)
-            
-            
-#            THE IDS only ['D016559', 'D011239', 'D000305', 'D016572', 'D000305'] ['D007674', 'D007674', 'D007674', 'D012595', 'D012595', 'D057049']
-#            print(chem_ids,dis_ids)
+
             
             #GROUPING AS UNIQUE
             chem_list={}
@@ -188,9 +176,7 @@ class preprocess_model(object):
                         else:
                             dis_list[ids].append(item[0])
                             
-#                print(dis_list)
-            #{'D016559': ['tacrolimus'], 'D011239': ['prednisolone'], 'D000305': ['corticosteroid', 'corticosteroids', 'corticosteroid', 'corticosteroids'], 'D016572': ['cyclosporine']}
-#            print(chem_list,dis_list)
+
             chem1=[]
             dis1=[]
             
@@ -219,8 +205,7 @@ class preprocess_model(object):
                 dis1.append(d)
                 for k in dis_list[dis]:
                     if k in title or k in abstract:
-#                        dis_list[dis][0]
-#                            print(k,rep)
+#                        
                         ## replace only exact match
                         title=title.replace(k+' ',rep+' ')
                         abstract=abstract.replace(k+' ',rep+' ')
@@ -228,21 +213,12 @@ class preprocess_model(object):
             
             self.id_chem.append(chem_list)
             self.id_dis.append(dis_list)
-#            print(len(chem1),len(dis1))
-#                print(chem1,dis1)  
-#            chem1=[[chem_list[x][0],x] for x in chem_list.keys()]
-#            dis1=[[dis_list[x][0],x] for x in dis_list.keys()]
-#            print(chem1,dis1)
+
             entity_pairs=list(itertools.product(chem1,dis1))
             
 #            print(pmid)
             assert len(entity_pairs)==len(chem1)*len(dis1)
-#                print(entity_pairs)
-            #len(chem1)*len(dis1)
-            
-#            print(len(entity_pairs))
-            #all combinations of (chem,dis) pais unique
-#                print(entity_pairs)
+
             self.pairs.extend(entity_pairs)
             
             title1=title
@@ -263,18 +239,7 @@ class preprocess_model(object):
                 if dis[0] in abstract1:
                     abstract1=abstract1.replace(dis[0],dis[-1])
             
-            
-#            print(title,abstract)
-            
-#            pr=[(pair[0][-1],pair[1][-1]) for pair in entity_pairs]
-#            print(pr)
-#            print('*',len(entity_pairs))
-            
-#            self.count_entity+=len(entity_pairs)
-            
-#                print(entity_pairs)
-            
-            
+
             #the no.of positive relations
             pair_cids=[(x[-2],x[-1]) for x in cids]
             
@@ -291,17 +256,7 @@ class preprocess_model(object):
 #                    self.count_p1+=1
                 elif pair_cids1[i] in entity_id_pair:
                     ct+=1
-#                    self.count_p1+=1
-                
-#            self.count_n1+=(len(entity_pairs)- ct)
-            
-#            for pair in entity_pairs:
-#                if (pair[0][-1],pair[1][-1]) in pair_cids:
-#                    self.count_p1+=1
-#                else:
-#                   self.count_n1+=1 
-                
-#            print(pair_cids)
+
             self.count_p+=len(cids)
             
 
@@ -379,13 +334,7 @@ class preprocess_model(object):
         #for a pmid
         for pmval in self.relation_list:
             pmid=pmval[1]
-##            if pmid=='7420681':
-#            entity_pairs=pmval[2]
-##            print('vv',len(entity_pairs))
-#            sample_pair=[]
-#            print(len(pmval[0]))
-            # for each entity pair in a pmid
-#            if pmid=='24438483':
+
             
             for items in pmval[0]:
 #                print(len(items))
@@ -457,15 +406,7 @@ class preprocess_model(object):
                             
                 inter=list(itertools.product(p1,p2))
                 inter=list(set(inter))
-#                print(inter,pair,label)
-                
-                
-#                if len(intra)>0:
-#                    self.t+=1
-#                if len(inter)>0:
-#                    self.t+=1
-#                print('intra',intra,pair)
-#                print('inter',inter,pair,label)
+
                 if len(intra)>=1:
                     if label==1:
                         
@@ -496,7 +437,10 @@ class preprocess_model(object):
                         triplet_intra.append([e1,r,e2])
                         
                         
-                    if len(pl_intra)>0: 
+                    if len(pl_intra)>0:
+                    ''''
+                    choose the sample randomly. without any SDP computation
+                    '''
                         
 #                        idx=pl_intra.index(min(pl_intra))
                         r=random.choice(pl_intra)
@@ -523,24 +467,14 @@ class preprocess_model(object):
                 elif len(intra)==1:
                     sel_intra=intra[0]
                     
-#                        if label==0:
-#                    if '-induced' in st:
-#                        st=st.replace('-induced',' induced')
-#                    if '-associated' in st:
-#                        st=st.replace('-associated',' associated')
+
                     pl,pw,d,e1,e2,r=sdp(sel_intra[-1],pair)
                     s_path=pw
                     sampled.append(sel_intra)
                     triplet=[e1,r,e2]
                     self.samples.append((pmid,sel_intra[0],pr,label,s_path,triplet,'intra'))
                 
-#                if label==1:
-#                    self.pp+=len(sampled)
-#                else:
-#                    self.nn+=len(sampled)
-#                self.t+=len(sampled)
-#                        print('selected',sel_intra)
-                  
+
                 
                 if len(inter)>1:
 #                    print(inter)
@@ -561,14 +495,10 @@ class preprocess_model(object):
                         path=pw[1:len(pw)-1]
                         pl=len(path)
                         pl_inter.append(pl)
-#                        else:
-#                             sampled.append(item)
-#                             s=item[0]+' '+item[1]
-#                             self.samples.append((s,pair,label))
+
                     
                     if len(pl_inter)>0:
-#                        idx=pl_inter.index(min(pl_inter))
-#                        print(pl_inter)
+
                         r1=random.choice(pl_inter)
                         
 #                        print(sel_intra)
@@ -628,81 +558,9 @@ class preprocess_model(object):
     Creating positive and negative samples from the text. The relation will be binary either 0/1
     '''
     def write_path(self):
-        
-#        pred_dir=os.path.join(self.opath,'sample_cdr_aux2.tsv')
-#        under=os.path.join(self.opath,'under_sampled_aux2.tsv')
-#        multi=os.path.join(self.opath,'multi_sampled_aux2.tsv')
-##        full=os.path.join(self.opath,'full_sampled_bal_aux.tsv')
+
         full1=os.path.join(self.opath,'dev_nosdp.tsv')
-#        full_batch=os.path.join(self.opath,'full_sampled_batch_aux2.tsv')
-        
-#        with open(pred_dir, 'w',encoding='utf-8') as tsvfile:
-#            writer = csv.writer(tsvfile, delimiter='\t',lineterminator='\n')
-#            for _,r1 in enumerate(self.samples): 
-##                print(r1)
-#                if len(r1)>0:
-#                    for sents in r1[0][:1]:
-#                        s=sents[0]
-#                        pl,pw,d=sdp(s)
-##                        print(r1[1],r1[2])
-#                        writer.writerow([sents[0],sents[1],r1[1],r1[2],pl,pw,d])
-#                else:
-#                    writer.writerow(r1)
-#                    
-#        with open(multi, 'w',encoding='utf-8') as tsvfile:
-#            writer = csv.writer(tsvfile, delimiter='\t',lineterminator='\n')
-#            
-#            for _,r1 in enumerate(self.multi_sample): 
-#                if len(r1)>0:
-#                    
-##                    print(r1)
-#                    for sents in r1[0][:1]:
-#                        s=sents[0]+','+ sents[1]
-#                        s=s.replace('.,',',')
-#                        pl,pw,d=sdp(s)
-##                        print(r1[1],r1[2])
-#                        writer.writerow([sents[0],sents[1],r1[1],r1[2],pl,pw,d])
-#                else:
-#                    writer.writerow(r1)
-                    
-#        with open(full, 'w',encoding='utf-8') as tsvfile:
-#            ct=0
-#            ct1=0
-#            nn=[]
-#            pp=[]
-#            writer = csv.writer(tsvfile, delimiter='\t',lineterminator='\n')
-#            for _,r1 in enumerate(self.samples): 
-#                if len(r1)>0:
-#                    if r1[3]==1:
-#                        ct+=1
-#                    else:
-#                        ct1+=1
-#                    writer.writerow([r1[0],r1[1],r1[2],r1[3]])
-##                else:
-##                    writer.writerow(r1)
-#            for _,r1 in enumerate(self.multi_sample): 
-#                
-#                
-#                if len(r1)>0:
-#                    if r1[2]!=0:
-#                        
-#                        for sents in r1[0]:
-#                            ct+=1
-#                            pp.append([sents[0],sents[1],r1[1],r1[2]])
-#                            writer.writerow([sents[0],sents[1],r1[1],r1[2]])
-#                    elif r1[2]==0:
-#                        ct1+=1
-#                        if len(r1[0])>0:
-#                            sents=r1[0][0]
-#                            nn.append([sents[0],sents[1],r1[1],r1[2]])
-##                            writer.writerow([sents[0],sents[1],r1[1],r1[2]])
-#            nn=nn[:2500]
-#            for r in nn:
-#                 writer.writerow([r[0],r[1],r[2],r[3]])      
-#                else:
-#                    writer.writerow(r1)
-#        print('pos,neg',ct,ct1)
-#        print('pos,neg',len(pp),len(nn))
+
         with open(full1, 'w',encoding='utf-8') as tsvfile:
             writer = csv.writer(tsvfile, delimiter='\t',lineterminator='\n')
             for _,r1 in enumerate(self.samples): 
@@ -715,26 +573,7 @@ class preprocess_model(object):
                 
                     
            
-#        with open(full_batch, 'w',encoding='utf-8') as tsvfile:
-#            writer = csv.writer(tsvfile, delimiter='\t',lineterminator='\n')
-#            
-#            for _,r1 in enumerate(self.full_sample): 
-#                pmid=r1[1]
-#                items=r1[0]
-#                for r in items:
-#                    writer.writerow([pmid,r[0],r[1],r[2]])
-#                
-#                    
-#        with open(under, 'w',encoding='utf-8') as tsvfile:
-#            writer = csv.writer(tsvfile, delimiter='\t',lineterminator='\n')
-#            for _,r1 in enumerate(self.under_sampled): 
-#                if len(r1)>0:
-#                    writer.writerow([r1[0],r1[1]])
-#                else:
-#                    writer.writerow(r1)
 
-        
-        
         
 def parse_args():
         parser = argparse.ArgumentParser(description="Parse the data")
@@ -758,8 +597,7 @@ def parse_args():
     
 args = parse_args()
 
-# Train TWEC model
-#args=['--train .\\train\\']
+
 m = preprocess_model(args)
 
 data=m.extract_data('CDR_DevelopmentSet.PubTator.txt')
@@ -768,16 +606,5 @@ data=m.extract_data('CDR_DevelopmentSet.PubTator.txt')
 #CDR_TrainingSet.PubTator
 #CDR_sample.PubTator.txt
 infos,info_list=m.extract_rel_data()
-
-#pos=[k for k in infos if k[-1]==1]
-#neg=[k for k in infos if k[-1]==0]
-#print('BEFORE: # of positive and negative relations',len(pos),len(neg))
-#
-
-#@@@@
 fullsample,sample=m.formulate_samples()
-
-#neg=[x for x in multisample if x[2]==0]
-##
-
 m.write_path()
