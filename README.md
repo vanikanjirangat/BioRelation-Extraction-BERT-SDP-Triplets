@@ -3,7 +3,7 @@
 We propose to utilize SDP features for data sample slections and effective noisy sample pruning. Further, we utilize the triplet information for model learning.
 
 # Data Generation: 
-Gen_data_CDR.py-- script to generate the Train, Dev and Test sets for CDR dataset using SDP information
+Gen_data_CDR.py-- script to generate the Train, Dev and Test sets for CDR dataset using SDP information\\
 The script in turn utilizes:
 scispacy_parse_intra.py and scispacy_parse_pair.py.
 scispacy_parse_intra.py-- SDP comptation for intra-sentential relations
