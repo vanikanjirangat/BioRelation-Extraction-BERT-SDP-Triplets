@@ -1,5 +1,5 @@
-# BioRelation_Extraction_BioBERT_SDP
-Biomedical Relation Extraction by enhancing the tranformer models reducing the noisy samples utilizing shortes dependency features (SDP).
+# Enhancing Biomedical Relation Extraction with Transformer Models using Shortest Dependency Path Features and Triplet Information
+
 We propose to utilize SDP features for data sample slections and effective noisy sample pruning. Further, we utilize the triplet information for model learning.
 
 # Data Generation: 
