@@ -3,12 +3,12 @@
 We propose to utilize SDP features for data sample slections and effective noisy sample pruning. Further, we utilize the triplet information for model learning.
 
 # Data Generation: 
-Gen_data_CDR.py-- script to generate the Train, Dev and Test sets for CDR dataset using SDP information\\
-The script in turn utilizes:
-scispacy_parse_intra.py and scispacy_parse_pair.py.
-scispacy_parse_intra.py-- SDP comptation for intra-sentential relations
-scispacy_parsepair.py--SDP comptation for inter-sentential relations
-Gen_data_random_CDR--script to generate the train, dev and test sets for CDR dataset without SDP
+Gen_data_CDR.py-- script to generate the Train, Dev and Test sets for CDR dataset using SDP information  
+The script in turn utilizes:  
+scispacy_parse_intra.py and scispacy_parse_pair.py  
+scispacy_parse_intra.py-- SDP comptation for intra-sentential relations  
+scispacy_parsepair.py--SDP comptation for inter-sentential relations  
+Gen_data_random_CDR--script to generate the train, dev and test sets for CDR dataset without SDP  
 
 # Training the Model and Predictions
 BioBERT model is being used. You have to download the pretrained model files for BioBert from https://github.com/dmis-lab/biobert and convert the checkpoints using the instructions in https://huggingface.co/transformers/converting_tensorflow_models.html and store them in the required path.
