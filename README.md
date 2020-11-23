@@ -19,13 +19,13 @@ The paths of input directory, the model path and output directory must be set pr
 # Requirements
 torch==1.1.0
 
-spacy==2.2.3
+spacy==2.3.2 (download the model pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.3.0/en_core_sci_sm-0.3.0.tar.gz)
 
-tensorflow==1.12.0
+tensorflow==1.12.0)
 
 Keras==2.2.4
 
-scispacy==0.2.4
+scispacy==0.3.0
 
 matplotlib==3.0.2
 
