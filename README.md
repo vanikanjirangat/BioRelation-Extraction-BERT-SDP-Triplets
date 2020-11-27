@@ -1,8 +1,8 @@
-# Enhancing Biomedical Relation Extraction with Transformer Models using Shortest Dependency Path Features and Triplet Information
+## Enhancing Biomedical Relation Extraction with Transformer Models using Shortest Dependency Path Features and Triplet Information
 
 In the paper, we propose utilizing shortest dependency path (SDP) features for constructing the data samples by pruning out the noisy information and selecting the most representative samples for model learning. We also utilize triplet information in model learning with the biomedical variant of BERT, viz., BioBERT, by representing the problem as a sentence pair classification task and using the (sentence, triplet information) pair. propose to utilize SDP features for data sample slections and effective noisy sample pruning. Further, we utilize the triplet information for model learning.
 
-## Data Generation: 
+### Data Generation: 
 *Gen_data_CDR.py*-: script to generate the Train, Dev and Test sets for CDR dataset using SDP information  
 The script in turn utilizes:  
 *scispacy_parse_intra.py* and *scispacy_parse_pair.py*  
@@ -10,12 +10,9 @@ The script in turn utilizes:
 *scispacy_parsepair.py*-:SDP comptation for inter-sentential relations  
 *Gen_data_random_CDR*-:script to generate the train, dev and test sets for CDR dataset without SDP  
 
-## Steps 
+### Steps 
 
 First generate the samples using the scripts specified in *Data Generation*. Once the *Train*, *Dev* and *Test* sets are constructed, we have to Train the model.
-
-
-### Model Training & Testing
 
 BioBERT model is used. You have to download the pretrained model files for BioBert from *https://github.com/dmis-lab/biobert* and convert the checkpoints using the instructions in *https://huggingface.co/transformers/converting_tensorflow_models.html* and store them in the required path. 
 
