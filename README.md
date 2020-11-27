@@ -2,7 +2,7 @@
 
 In the paper, we propose utilizing shortest dependency path (SDP) features for constructing the data samples by pruning out the noisy information and selecting the most representative samples for model learning. We also utilize triplet information in model learning with the biomedical variant of BERT, viz., BioBERT, by representing the problem as a sentence pair classification task and using the (sentence, triplet information) pair. propose to utilize SDP features for data sample slections and effective noisy sample pruning. Further, we utilize the triplet information for model learning.
 
-### Data Generation: 
+### Data Generation
 *Gen_data_CDR.py*-: script to generate the Train, Dev and Test sets for CDR dataset using SDP information  
 The script in turn utilizes:  
 *scispacy_parse_intra.py* and *scispacy_parse_pair.py*  
