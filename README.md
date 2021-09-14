@@ -47,16 +47,3 @@ pandas==0.24.2
 numpy==1.17.0
 
 scikit_learn==0.23.2
-
-### CITE
-
-If you extend or use this work, please cite:
-
-@article{kanjirangat2021enhancing,
-  title={Enhancing Biomedical Relation Extraction with Transformer Models using Shortest Dependency Path Features and Triplet Information},
-  author={Kanjirangat, Vani and Rinaldi, Fabio},
-  journal={Journal of Biomedical Informatics},
-  pages={103893},
-  year={2021},
-  publisher={Elsevier}
-}
