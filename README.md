@@ -1,4 +1,5 @@
 ## Enhancing Biomedical Relation Extraction with Transformer Models using Shortest Dependency Path Features and Triplet Information
+https://www.sciencedirect.com/science/article/pii/S1532046421002227
 
 In the paper, we propose utilizing shortest dependency path (SDP) features for constructing the data samples by pruning out the noisy information and selecting the most representative samples for model learning. We also utilize triplet information in model learning with the biomedical variant of BERT, viz., BioBERT, by representing the problem as a sentence pair classification task and using the (sentence, triplet information) pair. propose to utilize SDP features for data sample slections and effective noisy sample pruning. Further, we utilize the triplet information for model learning.
 
